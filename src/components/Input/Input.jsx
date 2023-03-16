@@ -7,7 +7,9 @@ const Input = ({ type, label, placeholder }) => {
 
   return (
     <div className="mt-3 flex flex-col">
-      <label htmlFor="email">{label}</label>
+      <label className="text-sm mb-1" htmlFor="email">
+        {label}
+      </label>
       <div className="border border-slate-400 rounded-md flex items-center">
         <input
           type={type === "password" ? inputType : type}
