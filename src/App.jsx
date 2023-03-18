@@ -1,6 +1,20 @@
+import { useState } from "react";
 import Input from "./components/Input/Input";
+import PasswordInput from "./components/Input/PasswordInput";
 
 function App() {
+  const [data, setData] = useState({});
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="flex h-screen w-full bg-white md:bg-gray-100 items-center justify-center">
       <div className="md:w-6/12 w-full md:h-[500px] bg-white flex items-center justify-center md:rounded-md md:shadow-md">
@@ -14,13 +28,30 @@ function App() {
 
               <form>
                 <Input
+                  name="first-name"
                   label="First Name"
                   placeholder="Enter your first name"
                   type="text"
+                  onChange={handleChange}
                 />
-                <Input label="Last Name" placeholder="Enter your last name" />
-                <Input label="Email" type="email" />
-                <Input label="Password" type="password" />
+                <Input
+                  name="last-name"
+                  label="Last Name"
+                  placeholder="Enter your last name"
+                  onChange={handleChange}
+                />
+                <Input
+                  name="email"
+                  label="Email"
+                  type="email"
+                  onChange={handleChange}
+                />
+                <PasswordInput
+                  name="password"
+                  label="Password"
+                  type="password"
+                  onChange={handleChange}
+                />
               </form>
             </div>
           </div>
